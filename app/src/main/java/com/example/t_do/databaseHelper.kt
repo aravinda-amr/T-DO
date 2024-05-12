@@ -29,6 +29,7 @@ class databaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
+    //create task
     fun insertNote(note: note){
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -37,5 +38,26 @@ class databaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         db.insert(TABLE_NAME,null,values)
         db.close()
+    }
+
+    //get all tasks
+    fun getAllTasks(): List<note> {
+        val taskList = mutableListOf<note>()
+
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME"
+        val cursor = db.rawQuery(query,null)
+
+        while(cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+            val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
+            val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+
+            val task = note(id,title,content)
+            taskList.add(task)
+        }
+        cursor.close()
+        db.close()
+        return taskList
     }
 }
