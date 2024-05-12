@@ -90,4 +90,14 @@ class databaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return note(id,title,content)
 
     }
+
+    //delete note method
+
+    fun deleteNote(noteId: Int){
+        val db = writableDatabase
+        val whereClause = "$COLUMN_ID = ?"
+        val whereArgs = arrayOf(noteId.toString())
+        db.delete(TABLE_NAME, whereClause,whereArgs)
+        db.close()
+    }
 }
