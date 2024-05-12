@@ -82,8 +82,8 @@ class databaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.moveToFirst()
 
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
-        val title = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
-        val content = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+        val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
+        val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
 
         cursor.close()
         db.close()
