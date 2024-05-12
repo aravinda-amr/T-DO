@@ -13,23 +13,24 @@ class updateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = databaseHelper(this)
 
-        noteId = intent.getIntExtra("note_id", -1)
-        if(noteId == -1){
+        noteId = intent.getIntExtra("task_id", -1)
+        if (noteId == -1) {
             finish()
             return
         }
 
         val note = db.getNoteBYID(noteId)
-        binding.updateeditText.setText(note.title)
-        binding.updatecontentEditText.setText(note.content)
+        binding.updateTitleET.setText(note.title)
+        binding.updateContentET.setText(note.content)
 
-        binding.updatesaveBtn.setOnClickListener{
-            val newTitle = binding.editTaskHeading.text.toString()
-            val newCon = binding.updatecontentEditText.text.toString()
+        binding.updatesavebtn.setOnClickListener{
+            val newTitle = binding.updateTitleET.text.toString()
+            val newCon = binding.updateContentET.text.toString()
             val updatedNote = note(noteId,newTitle,newCon)
             db.updateTask(updatedNote)
             finish()

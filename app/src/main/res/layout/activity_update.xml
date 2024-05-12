@@ -13,48 +13,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Edit Note."
-        android:textColor="@color/orange"
+        android:text="Edit Note"
+        android:textColor="@color/yellow"
         android:textSize="24sp" />
 
     <ImageView
-        android:id="@+id/updatesave_btn"
+        android:id="@+id/updatesavebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_done_24"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/editTaskHeading"
-        android:layout_marginEnd="6dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/baseline_done_24" />
 
     <EditText
-        android:id="@+id/updateedit_text"
+        android:id="@+id/updateTitleET"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="Enter the title"
-        android:padding="12dp"
-        android:textSize="20sp"
         android:layout_below="@id/editTaskHeading"
-        android:background="@drawable/orange_border"
         android:layout_marginTop="16dp"
+        android:background="@drawable/orange_border"
+        android:fontFamily="@font/roboto_mono"
+        android:hint="Enter the title"
         android:maxLines="1"
-        android:fontFamily="@font/roboto_mono"/>
+        android:padding="12dp"
+        android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/updatecontentEditText"
+        android:id="@+id/updateContentET"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Enter the description"
-        android:gravity="top"
-        android:padding="12dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/roboto_mono"
+        android:layout_below="@id/updateTitleET"
+        android:layout_marginTop="12dp"
         android:background="@drawable/orange_border"
-        android:layout_below="@id/updateedit_text"
-        android:layout_marginTop="12dp"/>
-
-
+        android:fontFamily="@font/roboto_mono"
+        android:gravity="top"
+        android:hint="Enter the description"
+        android:padding="12dp"
+        android:textSize="18sp" />
 
 
 </RelativeLayout>
